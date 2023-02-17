@@ -1,0 +1,29 @@
+{% extends 'task_list.html' %}
+
+{% block content %}
+<h3 class="task-title">Список завершенных задач: </h3><br>
+<style>
+   table {
+    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 70%; /* Ширина таблицы */
+   }
+   </style>
+    {% for task in tasks_compl_ %}
+            <table><tr>
+                <td>
+                <span class="task-title" style="font-size: 14pt; font-weight: bold" >
+                    {{task.title}}
+                </span>
+                </td>
+                <td >
+                    создана {{ task.created_time|date:"d-m-Y G:i:s" }}
+                </td>
+                <td>
+                    завершена {{ task.completed_time|date:"d-m-Y G:i:s" }}
+                </td>
+            </tr>
+            </table>
+    {% endfor %}
+<br>
+<a href="/">Главная страница</a>
+{% endblock content %}

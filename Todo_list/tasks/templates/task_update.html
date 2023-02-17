@@ -1,0 +1,10 @@
+{% extends 'task_list.html' %}
+
+{% block content %}
+    <h2>Изменение задачи "{{ object }}"</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Применить изменения">
+    </form>
+{% endblock content %}

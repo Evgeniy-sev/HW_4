@@ -1,0 +1,36 @@
+{% extends 'task_list.html' %}
+
+{% block content %}
+<h3 class="task-title">Список незавершенных задач: </h3><br>
+<style>
+   table {
+    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 70%; /* Ширина таблицы */
+   }
+   </style>
+    {% for task in tasks_ %}
+            <table><tr>
+                <td>
+                <span class="task-title" style="font-size: 14pt; font-weight: bold" >
+                    {{task.title}}
+                </span><br>
+                    (создана {{ task.created_time|date:"d-m-Y G:i:s" }})
+                </td>
+                <td >
+                <form action="{% url 'update' task.pk %}">
+                <input type="submit" value="Редактирование задачи" >
+                </form>
+                </td>
+                <td>
+                <form action="{% url 'delete' task.pk %}">
+                <input type="submit" value="Удаление задачи" >
+                </form>
+                </td>
+            </tr>
+            </table>
+    {% endfor %}
+<br>
+<a href="/">Главная страница</a>
+{% endblock content %}
+
+
